@@ -1,10 +1,26 @@
-$('#carouselExampleIndicators').on('slide.bs.carousel', function () {
 
-    var totalItems = $('.carousel-item').length;
-    var currentIndex = $('div.carousel-item.active').index()+2;
-    if( currentIndex == 4){
-        currentIndex = 1;
+$( document ).ready(function() {
+    function slideNumber(){
+        var currentIndex = $('#carouselExampleIndicators .carousel-item.active').index(currentIndex) + 2 ;
+        console.log(currentIndex);
+        if(currentIndex == 4){
+            currentIndex=1;
+        }
+        $('.carousel-counter').html(currentIndex + '/3');
     }
-    $('.carousel-counter').html(''+currentIndex+'/'+totalItems+'');
 
+$('#carouselExampleIndicators').on('slide.bs.carousel', function () {
+slideNumber();
 })
+$(".next").click(function(){
+    slideNumber();
+});
+
+$(".prev").click(function(){
+    slideNumber();
+});
+
+$(".carousel-indicators li").click(function(){
+    slideNumber();
+});
+});
